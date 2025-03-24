@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='pyUFbr',
-    version='0.1.0',
-    url='https://github.com/sidon/py-ufbr',
+    name='shipay-pyUFbr',
+    version='0.1.1',
+    url='https://github.com/shipay-pag/shipay-py-ufbr',
     license='MIT License',
     author='Sidon Duarte',
     author_email='sidoncd@gmail.com',
