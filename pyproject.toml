@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "shipay-py-ufbr"
+
+version = "0.1.1"
+
+description = ""
+authors = ["devs <devs@shipay.com.br>"]
+repository = "https://github.com/shipay-pag/shipay-py-ufbr"
+readme = "README.md"
+
+packages = [{ include = "pyUFbr" }]
+
+[[tool.poetry.source]]
+name = "shipay-pypiserver-external"
+url = "https://pypiserver.shipay.com.br"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+xlrd = "1.0.0"
+setuptools = "^74.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
