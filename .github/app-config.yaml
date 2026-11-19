@@ -1,0 +1,16 @@
+# =============================================================================
+# Configuração de PACOTE Python para a pipeline da Shipay.
+# Este é o ÚNICO lugar onde o time configura a pipeline.
+# Referência: docs/pacotes-python.md em shipay-pag/shipay-pipeline
+# =============================================================================
+
+# Pacote Python publicado (wheel/sdist) no índice privado shipay-python-libs.
+# Publica em push na master quando a versão do pyproject.toml ainda não tem tag.
+kind: package
+
+# Squad dona do pacote (agrupamento no DefectDojo e métricas).
+squad: CORE-PAYMENTS
+
+python-version: "3.11"          # pyproject: python = "^3.11"
+poetry-version: "1.8.3"         # cabeçalho do poetry.lock
+project-dir: .

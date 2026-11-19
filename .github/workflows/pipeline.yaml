@@ -1,0 +1,38 @@
+# =============================================================================
+# ÚNICO workflow do repositório do pacote — copie este arquivo como está.
+#
+# Ele só define OS GATILHOS. Toda a lógica (CI, tag, release, publish) vive na
+# pipeline central: shipay-pag/shipay-pipeline
+#
+# A configuração do SEU pacote (kind: package, squad, versão de Python) fica em
+# .github/app-config.yaml — não neste arquivo.
+#
+# Não adicione jobs nem steps aqui: mudanças de fluxo são feitas na pipeline
+# central via PR revisado pelo time de plataforma (ver docs/governanca.md).
+# =============================================================================
+name: Pipeline
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [master, main]
+  push:
+    branches: [master, main]
+  release:
+    types: [published]
+
+# Uma execução por ref; PRs cancelam execuções antigas do mesmo PR.
+concurrency:
+  group: pipeline-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
+
+jobs:
+  pipeline:
+    # Fixe a major version (@v1). NUNCA use @master.
+    uses: shipay-pag/shipay-pipeline/.github/workflows/app-pipeline.yaml@v1
+    with:
+      # Apontando para um ref DIFERENTE do default (ex.: um branch de teste da
+      # pipeline)? Descomente e use o MESMO ref do `uses:` acima — é com ele que
+      # a pipeline faz o checkout interno de actions/scripts/config.
+      pipeline_ref: v1 # use a branch de teste aqui e na linha do `uses:` acima
+    secrets: inherit
