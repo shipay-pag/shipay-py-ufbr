@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "shipay-py-ufbr"
 
-version = "0.1.2"
+version = "0.1.3"
 
 description = ""
 authors = ["devs <devs@shipay.com.br>"]
@@ -17,7 +17,6 @@ url = "https://southamerica-east1-python.pkg.dev/infrastructure-347023/shipay-py
 [tool.poetry.dependencies]
 python = "^3.11"
 xlrd = "1.0.0"
-setuptools = "^80.9.0"
 
 [build-system]
 requires = ["poetry-core"]
